@@ -1,4 +1,3 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 #include<set>
 #include<map>
@@ -31,36 +30,45 @@ void fast()
 int  main()
 {
 	fast();
-	int n, b;
+	int l;
 
 
-	while (cin >> b >> n && b > 0 && n > 0)
+	while (cin >>l && l > 0 )
 	{
-		long long mr[22], a[22] = { 0 }, aa[22] = { 0 }, z = 0;
+		string s;
+		char ch='.';
+		int mn = 1e7, x = 0, idx;
 
-		for (int i = 1;i <= b;i++)
+		cin >> s;
+		for (int i = 0;i < s.size();i++)
 		{
-			cin >> mr[i];
-		}
-		for (int i = 0;i < n;i++)
-		{
-			int d, c, v;
-			cin >> d >> c >> v;
-
-			a[c] += v;
-			aa[d] += v;
-		}
-
-		for (int i = 1;i <= b;i++)
-		{
-			if (aa[i] > a[i] + mr[i])
+			if (s[i] == 'Z')
 			{
-				z = 1;
+				x = 1;
 				break;
 			}
+			else
+			{
+				if (ch == '.')
+				{
+					ch = s[i];
+					idx = i;
+					continue;
+				}
+				if (ch != s[i] && isalpha(s[i]))
+				{
+					mn = min(mn, abs(i - idx));
+					ch = s[i];
+					idx = i;
+				}
+				else if (ch == s[i])
+				{
+					idx = i;
+				}
+			}
 		}
-		if(!z) cout << 'S' << endl;
-		else cout<< 'N' << endl;
+		if (x) cout << 0 << endl;
+		else cout << mn << endl;
 	}
 	
 }
