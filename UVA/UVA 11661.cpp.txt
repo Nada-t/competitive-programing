@@ -27,37 +27,39 @@ void fast()
 	std::ios_base::sync_with_stdio(0);
 	cin.tie(NULL); cout.tie(NULL);
 }
-long long comb(int x,int y)
-{
-	long long cm = 1;
-	for (int i = y+1,j = 1;i <= x;i++, j++)
-	{
-		cm *= i;
-		cm /= j;
-	}
-	//cout << x << " " << y << " " << cm << endl;
-	return  cm;
-}
-int main()
+int  main()
 {
 	fast();
-	int n, m, t, x, y;
-	long long sum = 0;
+	int n, b;
 
-	cin >> n >> m >> t;
+
+	while (cin >> b >> n && b > 0 && n > 0)
+	{
+		long long mr[22], a[22] = { 0 }, aa[22] = { 0 }, z = 0;
+
+		for (int i = 1;i <= b;i++)
+		{
+			cin >> mr[i];
+		}
+		for (int i = 0;i < n;i++)
+		{
+			int d, c, v;
+			cin >> d >> c >> v;
+
+			a[c] += v;
+			aa[d] += v;
+		}
+
+		for (int i = 1;i <= b;i++)
+		{
+			if (aa[i] > a[i] + mr[i])
+			{
+				z = 1;
+				break;
+			}
+		}
+		if(!z) cout << 'S' << endl;
+		else cout<< 'N' << endl;
+	}
 	
-	if (n + m == t)
-	{
-		cout << 1 << endl;
-		return 0;
-	}
-		
-	int b = 4;
-	int g = t - b;
-	for (int i = 0;i < (t-b);i++)
-	{
-		if (((g - i) <= m && (b + i) <= n))
-		sum += comb(n, (b + i))*comb(m, (g - i));
-	}
-	cout << sum << endl;
 }
