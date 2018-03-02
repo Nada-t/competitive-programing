@@ -30,36 +30,29 @@ void fast()
 int  main()
 {
 	fast();
-	int n, b;
+	int n, m, a[100004], b[100004], sm = 0;
+	map <int, int> mp;
 
-
-	while (cin >> b >> n && b > 0 && n > 0)
+	cin >> n >> m;
+	for (int i = 0;i < n;i++)
 	{
-		long long mr[22], a[22] = { 0 }, aa[22] = { 0 }, z = 0;
-
-		for (int i = 1;i <= b;i++)
-		{
-			cin >> mr[i];
-		}
-		for (int i = 0;i < n;i++)
-		{
-			int d, c, v;
-			cin >> d >> c >> v;
-
-			a[c] += v;
-			aa[d] += v;
-		}
-
-		for (int i = 1;i <= b;i++)
-		{
-			if (aa[i] > a[i] + mr[i])
-			{
-				z = 1;
-				break;
-			}
-		}
-		if(!z) cout << 'S' << endl;
-		else cout<< 'N' << endl;
+		cin >> a[i];
 	}
-	
+	for (int i = n - 1;i >= 0;i--)
+	{
+		if (mp[a[i]] == 0)
+		{
+			sm++;
+		}
+		b[i] = sm;
+		mp[a[i]]++;
+	}
+	while (m--)
+	{
+		int l;
+		cin >> l;
+		
+		cout << b[l - 1] << endl;
+	}
 }
+
