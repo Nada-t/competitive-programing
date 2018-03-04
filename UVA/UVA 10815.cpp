@@ -27,28 +27,6 @@ void fast()
 	std::ios_base::sync_with_stdio(0);
 	cin.tie(NULL); cout.tie(NULL);
 }
-string bin(int n)
-{
-	string s = "";
-	while (n)
-	{
-		s += ((n % 2) + '0');
-		n /= 2;
-	}
-	return s;
-}
-int in(string s)
-{
-	int x = 0;
-	for (int i = 0;i < s.size();i++)
-	{
-		if (s[i] == '1')
-		{
-			x += pow(2, i);
-		}
-	}
-	return x;
-}
 int  main()
 {
 	fast();
