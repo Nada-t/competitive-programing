@@ -31,7 +31,6 @@ int  main()
 {
 	fast();
 	int n, l, r, x, a[16], sm = 0, sum = 0, mx = INT_MIN, mn = INT_MAX;
-	vector<int> v;
 
 	cin >> n >> l >> r >> x;
 	for (int i = 0;i < n;i++)
