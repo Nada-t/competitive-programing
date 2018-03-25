@@ -27,29 +27,38 @@ void fast()
 	std::ios_base::sync_with_stdio(0);
 	cin.tie(NULL); cout.tie(NULL);
 }
+long long a, b, c;
+bool check(int x, int y, int z)
+{
+	if (((x + y + z) != a) || ((x*y*z) != b) || (((x*x) + (y*y) + (z*z)) != c))
+		return 0;
+
+	return 1;
+}
 int  main()
 {
 	fast();
-	int n, a;
-	vector<int> v, v1;
+	int n;
 
 	cin >> n;
-	for (int i = 0;i < n;i++)
+	while (n--)
 	{
-		cin >> a;
-		v.push_back(a);
+		bool p = 0;
+		cin >> a >> b >> c;
+
+		for (int i = -1000;i <= 1000;i++)
+		{
+			for (int j = i + 1;j <= 1000;j++)
+			{
+				if ((a - (i + j) != i) && (a - (i + j) != j) && (check(i, j, a - (i + j))))
+				{
+					cout << i << " " << j << " " << a - (i + j) << endl;
+					i = 2000;
+					p = 1;
+					break;
+				}
+			}
+		}
+		if (!p) cout << "No solution." << endl;
 	}
-	sort(v.begin(), v.end());
-	int x = n, i = 0;
-	while (x)
-	{
-		//cout << v[i] << " " << v[x - 1] << endl;
-		v1.push_back(v[i]);
-		v1.push_back(v[x - 1]);
-		i++;
-		x--;
-	}
-	for (int i = 0;i < n;i++)
-		cout << v1[i] << " ";
-	cout << endl;
 }
