@@ -27,7 +27,7 @@ void fast()
 	std::ios_base::sync_with_stdio(0);
 	cin.tie(NULL); cout.tie(NULL);
 }
-long long a, b, c;
+int a, b, c;
 bool check(int x, int y, int z)
 {
 	if (((x + y + z) != a) || ((x*y*z) != b) || (((x*x) + (y*y) + (z*z)) != c))
