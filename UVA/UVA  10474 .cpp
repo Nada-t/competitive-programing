@@ -51,7 +51,7 @@ int  main()
 			cin >> x;
 			int x2 = (lower_bound(v.begin(), v.end(), x ) - v.begin());
 
-			if (v[x2] != x || x2 == n) cout << x << " not found" << endl;
+			if (v[x2] != x) cout << x << " not found" << endl;
 			else cout << x << " found at " << x2 + 1 << endl;
 
 		}
