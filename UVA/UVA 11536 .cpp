@@ -37,7 +37,7 @@ int  main()
 		map<long long, int>mp;
 		set<long long> st;
 		vector<long long> v;
-		int n, m, k, len = 1e9, i = 0, j = 0;
+		int n, m, k, len = 1e9, l = 0, r = 0;
 		cin >> n >> m >> k;
 
 		v.resize(n);
@@ -47,20 +47,20 @@ int  main()
 		{
 			v[i] = ((v[i - 1] + v[i - 2] + v[i - 3]) % m) + 1;
 		}
-		while (j < n)
+		while (l < n)
 		{
-			while (i < n && mp.size() < k)
+			while (r < n && mp.size() < k)
 			{
-				if (v[i] > 0 && v[i] <= k)
+				if (v[r] > 0 && v[r] <= k)
 				{
-					mp[v[i]]++;
+					mp[v[r]]++;
 				}
-				i++;
+				r++;
 			}
-			if (mp.size() == k) len = min(len, abs(i - j));
-			if (mp[v[j]] < 2) mp.erase(v[j]);
-			else mp[v[j]]--;
-			j++;
+			if (mp.size() == k) len = min(len, abs(l - r));
+			if (mp[v[l]] < 2) mp.erase(v[l]);
+			else mp[v[l]]--;
+			l++;
 		}
 		cout << "Case " << x++ << ": ";
 		if (len != 1e9) cout << len << endl;
