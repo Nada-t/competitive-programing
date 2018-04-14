@@ -52,7 +52,7 @@ int  main()
 		}
 		if (st2.size() == st1.size()) len = min(len, abs(l - r));
 		if (mp[s[l]] < 2) st2.erase(s[l]);
-	    mp[s[l]]--;
+                                mp[s[l]]--;
 		l++;
 	}
 	if (len != 1e9) cout << len << endl;
