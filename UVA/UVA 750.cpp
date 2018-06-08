@@ -59,9 +59,7 @@ void sol(int x)
 			{
 				dp[i] = dpd1[(x - i) + 7] = dpd2[x + i] = 1;
 				v[x] = i;
-
 				sol(x + 1);
-
 				dp[i] = dpd1[(x - i) + 7] = dpd2[x + i] = 0;
 			}
 		}
